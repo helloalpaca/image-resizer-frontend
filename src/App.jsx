@@ -35,7 +35,8 @@ function App() {
     formData.append('height', height);
 
     try {
-      const response = await fetch('http://localhost:3000/image/resize', {
+      const backendApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'; // 개발 환경에서는 localhost 사용
+      const response = await fetch(`${backendApiUrl}/image/resize`, {
         method: 'POST',
         body: formData,
       });
